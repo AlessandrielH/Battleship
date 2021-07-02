@@ -1,5 +1,5 @@
 # Battleship
 Created by:
-Jessica Minor
-Joycelyn Minor
+Jessica Minor,
+Joycelyn Minor,
 Alessandriel Harper
