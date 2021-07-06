@@ -1,0 +1,18 @@
+void menu() 
+{    
+    cout << "***********************************" << endl;    
+    cout << "*         BattleShip Game         *" << endl;
+    cout << "*               By                *" << endl; 
+    cout << "* A. Harper, J. Minor, & J. Minor *" << endl;    
+    cout << "***********************************" << endl;  
+    cout << "* 1. Play. Enter players' names.  *" << endl; 
+    cout << "* 2. Exit.                        *" << endl; 
+    cout << "*********************************
+    **" << endl;
+}
+
+int main()
+{    
+    menu();
+    return 0;
+}
