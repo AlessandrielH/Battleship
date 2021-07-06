@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+void menu() 
+{    
+    cout << "****************************************" << endl;    
+    cout << "*            BattleShip Game           *" << endl;
+    cout << "*                  By                  *" << endl; 
+    cout << "*   A. Harper, J. Minor, & J. Minor    *" << endl;    
+    cout << "****************************************" << endl;  
+    cout << "* 1. Play game. Enter players' names.  *" << endl; 
+    cout << "* 2. Exit game.                        *" << endl; 
+    cout << "****************************************" << endl;
+}
+
+int main()
+{    
+    menu(); 
+    // display the menu    
+    //Ask the user to select an option.    
+    int choice;  
+    cout<< "Select an option from the menu above. ";  
+    cin >> choice;    
+    if (choice == 1)    
+    {        
+        string player1, player2;        
+        cout << "Enter player 1's name: ";        
+        cin >> player1; 
+        cout<< "Hello "<<player1<< ". "<<endl;
+        cout << "Enter player 2's name: ";        
+        cin >> player2;  
+        cout<< "Hello "<<player2<< ". "<<endl;     
+          
+        }    
+        else if (choice == 2)    
+        {        
+            cout << "Goodbye for now." << endl;
+        }       
+        return 0;
+        
+    }
