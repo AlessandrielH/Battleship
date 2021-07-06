@@ -1,6 +1,7 @@
 #pragma once
 #ifndef BATTLESHIP
 #define BATTLESHIP
+//This is the battleship header file
 
 class Battleship
 {
