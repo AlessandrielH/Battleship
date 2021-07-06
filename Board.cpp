@@ -1,6 +1,5 @@
 #include "Board.h"
 #include<iostream>
-//This is the board class
 
 using namespace std;
 
