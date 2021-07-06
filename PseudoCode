@@ -1,0 +1,23 @@
+Pseudo Code
+
+int main()
+{
+  //Initialize default variables
+  //Create game board
+  
+  //Loop till all ships are placed
+    //Draw board
+    //A player places ships
+    // Toggle to next player
+
+  //Game Loop Start
+    //Player X inputs valid attack grid
+    // Check to see if attack is a hit
+    // Remove/add damage to hit ships
+    // Redraw game board
+    // Check to see if game is over
+        // If game over - exit loop/end program
+    // Toggle next player's turn
+  //Game Loop Return
+  
+}
