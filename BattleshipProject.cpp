@@ -26,84 +26,6 @@ void displayMenu()
     cout << "****************************************" << endl;
 }
 
-bool hitSuccess(Board b[][], int x, int y)
-{
-    if (b[x][y]=='X')
-    {
-     return true;   
-    }
-}
-
-void Attack(string name, int* x, int* y)
-{
-    *x = -1;
-    *y = -1;
-    int tempX, tempY;
-    do {
-        cout << name << " will now attack!!!" << endl;
-        cout << name << ", enter the x-coordinates: ";
-        cin >> tempX;
-        cout << name << ", enter the y-coordinates: ";
-        cin >> tempY;
-
-        if (tempX < 0 || tempX>10 || tempY < 0 || tempY>10)
-        {
-            cout << name << "Incorrect x or y coordinants." << endl;
-            cout << "Coordinants must range from 0-10." << endl;
-        }
-        else
-        {
-            *x = tempX;
-            *y = tempY;
-        }
-    } while (*x==-1||*y==-1);
-}
-
-void setShips(Battleship ship,Board b,int size, int x1, int y1, int x2, int y2)
-{
-    bool error = true;
-    do
-    {
-        cout << "Enter the x-coordinant for the front of battleship: ";
-        cin >> x1;
-        cout << "Enter the y-coordinant for the front of battleship: ";
-        cin >> y1;
-        cout << "Enter the x-coordinant for the back of battleship: ";
-        cin >> x2;
-        cout << "Enter the y-coordinant for the back of battleship: ";
-        cin >> y2;
-
-        if (x1<0 || x1>b.getsize() || x2<0 || x2>b.getsize() || y1<0 || y1>b.getsize() || y2<0 || y2>b.getsize())
-        {
-            error = true;
-        }
-        else
-        {
-            error = false;
-        }
-    } while (error ==true);
-
-
-    ship.placeShip(b, size, x1, y1, x2, y2);
-}
-
-bool gameOver(Board attacker[][], Board victim[][])
-{
-    int size =10;
-    for(int i=0;i<size;i++)
-    {
-        for(int j=0;j<size;j++)
-        {
-          if (attacker[i][j]!=victim[i][j])
-          {
-              return false;
-          }
-        }
-    }
-    return true;
-}
-__________________________________________________________________________________________--
-
 int main()
 {
     string response;
@@ -227,4 +149,79 @@ int main()
     }
     return 0;
 };
+bool hitSuccess(Board b[][], int x, int y)
+{
+    if (b[x][y]=='X')
+    {
+     return true;   
+    }
+}
 
+void Attack(string name, int* x, int* y)
+{
+    *x = -1;
+    *y = -1;
+    int tempX, tempY;
+    do {
+        cout << name << " will now attack!!!" << endl;
+        cout << name << ", enter the x-coordinates: ";
+        cin >> tempX;
+        cout << name << ", enter the y-coordinates: ";
+        cin >> tempY;
+
+        if (tempX < 0 || tempX>10 || tempY < 0 || tempY>10)
+        {
+            cout << name << "Incorrect x or y coordinants." << endl;
+            cout << "Coordinants must range from 0-10." << endl;
+        }
+        else
+        {
+            *x = tempX;
+            *y = tempY;
+        }
+    } while (*x==-1||*y==-1);
+}
+
+void setShips(Battleship ship,Board b,int size, int x1, int y1, int x2, int y2)
+{
+    bool error = true;
+    do
+    {
+        cout << "Enter the x-coordinant for the front of battleship: ";
+        cin >> x1;
+        cout << "Enter the y-coordinant for the front of battleship: ";
+        cin >> y1;
+        cout << "Enter the x-coordinant for the back of battleship: ";
+        cin >> x2;
+        cout << "Enter the y-coordinant for the back of battleship: ";
+        cin >> y2;
+
+        if (x1<0 || x1>b.getsize() || x2<0 || x2>b.getsize() || y1<0 || y1>b.getsize() || y2<0 || y2>b.getsize())
+        {
+            error = true;
+        }
+        else
+        {
+            error = false;
+        }
+    } while (error ==true);
+
+
+    ship.placeShip(b, size, x1, y1, x2, y2);
+}
+
+bool gameOver(Board attacker[][], Board victim[][])
+{
+    int size =10;
+    for(int i=0;i<size;i++)
+    {
+        for(int j=0;j<size;j++)
+        {
+          if (attacker[i][j]!=victim[i][j])
+          {
+              return false;
+          }
+        }
+    }
+    return true;
+}
