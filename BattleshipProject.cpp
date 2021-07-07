@@ -46,7 +46,7 @@ int main()
         cout << player1 << ", please place first battleship." << endl;
         setShips(p1ShipA,p1Board, size, x1, y1, x2, y2);
         //Place battleship for player1
-        cout << player1 << ", please plase second battleship." << endl;
+        cout << player1 << ", please place second battleship." << endl;
         Battleship p1ShipB;
         setShips(p1ShipB, p1Board, size, x1, y1, x2, y2);
         //Place battleship for player1
@@ -64,12 +64,15 @@ int main()
         p2Board.createBoard();
         p2Board.displayBoard();
 
+        //Toggle to player2 to place battleships
+        //switchplayer;
+        
         //Place battleship for player2
         cout << player2 << ", please place first battleship." << endl;
         Battleship p2ShipA;
         setShips(p2ShipA, p2Board, size, x1, y1, x2, y2);
         //Place battleship for player2
-        cout << player2 << ", please plase second battleship." << endl;
+        cout << player2 << ", please place second battleship." << endl;
         Battleship p2ShipB;
         setShips(p2ShipB, p2Board, size, x1, y1, x2, y2);
         //Place battleship for player2
