@@ -10,8 +10,10 @@
 using namespace std;
 
 void Attack(string, int*, int*);
+bool hitSuccess(Board, int, int);
 void setShips(Battleship, Board,int, int, int, int, int);
-bool GameOver(Battleship, Board, bool);
+bool GameOver( Board, Board);
+void displayMenu();
 
 int main()
 {
@@ -30,116 +32,121 @@ int main()
         Board p1BoardA();
         Board p2BoardA();
          
-        cout << "Enter name of player 1: ";
-        cin >> player1;
-        cout << "Enter name of player 2:";
-        cin >> player2;
+        displayMenu();
+        int choice;  
+        cout<< "Select an option from the menu above. ";  
+        cin >> choice;    
+        if (choice == 1)    
+        {        
+            string player1, player2;        
+            cout << "Enter player 1's name: ";        
+            cin >> player1; 
+            cout<< "Hello "<<player1<< ". "<<endl;
+            cout << "Enter player 2's name: ";        
+            cin >> player2;  
+            cout<< "Hello "<<player2<< ". "<<endl;   
 
-        // builds the gameboard for player1
-        cout << "Creating board for " << player1 << endl;
-        Board p1Board;
-        p1Board.createBoard();
-        p1Board.displayBoard();
+            // builds the gameboard for player1
+            cout << "Creating board for " << player1 << endl;
+            Board p1Board;
+            p1Board.createBoard();
+            p1Board.displayBoard();
 
-        //Place battleship for player1
-        Battleship p1ShipA;
-        cout << player1 << ", please place first battleship." << endl;
-        setShips(p1ShipA,p1Board, size, x1, y1, x2, y2);
-        //Place battleship for player1
-        cout << player1 << ", please plase second battleship." << endl;
-        Battleship p1ShipB;
-        setShips(p1ShipB, p1Board, size, x1, y1, x2, y2);
-        //Place battleship for player1
-        cout << player1 << ", please place third battleship." << endl;
-        Battleship p1ShipC;
-        setShips(p1ShipC, p1Board, size, x1, y1, x2, y2);
-        //Place battleship for player1
-        cout << player1 << ", please place fourth battleship." << endl;
-        Battleship p1ShipD;
-        setShips(p1ShipD, p1Board, size, x1, y1, x2, y2);
+            //Place battleship for player1
+            Battleship p1ShipA;
+            cout << player1 << ", please place first battleship." << endl;
+            setShips(p1ShipA,p1Board, size, x1, y1, x2, y2);
+            //Place battleship for player1
+            cout << player1 << ", please plase second battleship." << endl;
+            Battleship p1ShipB;
+            setShips(p1ShipB, p1Board, size, x1, y1, x2, y2);
+            //Place battleship for player1
+            cout << player1 << ", please place third battleship." << endl;
+            Battleship p1ShipC;
+            setShips(p1ShipC, p1Board, size, x1, y1, x2, y2);
+            //Place battleship for player1
+            cout << player1 << ", please place fourth battleship." << endl;
+            Battleship p1ShipD;
+            setShips(p1ShipD, p1Board, size, x1, y1, x2, y2);
 
-        // builds the gameboard for player2
-        cout << "Creating board for " << player2 << endl;
-        Board p2Board;
-        p2Board.createBoard();
-        p2Board.displayBoard();
+            // builds the gameboard for player2
+            cout << "Creating board for " << player2 << endl;
+            Board p2Board;
+            p2Board.createBoard();
+            p2Board.displayBoard();
 
-        //Place battleship for player2
-        cout << player2 << ", please place first battleship." << endl;
-        Battleship p2ShipA;
-        setShips(p2ShipA, p2Board, size, x1, y1, x2, y2);
-        //Place battleship for player2
-        cout << player2 << ", please plase second battleship." << endl;
-        Battleship p2ShipB;
-        setShips(p2ShipB, p2Board, size, x1, y1, x2, y2);
-        //Place battleship for player2
-        cout << player2 << ", please place third battleship." << endl;
-        Battleship p2ShipC;
-        setShips(p2ShipC, p2Board, size, x1, y1, x2, y2);
-        //Place battleship for player2
-        cout << player2 << ", please place fourth battleship." << endl;
-        Battleship p2ShipD;
-        setShips(p2ShipD, p2Board, size, x1, y1, x2, y2);
+            //Place battleship for player2
+            cout << player2 << ", please place first battleship." << endl;
+            Battleship p2ShipA;
+            setShips(p2ShipA, p2Board, size, x1, y1, x2, y2);
+            //Place battleship for player2
+            cout << player2 << ", please plase second battleship." << endl;
+            Battleship p2ShipB;
+            setShips(p2ShipB, p2Board, size, x1, y1, x2, y2);
+            //Place battleship for player2
+            cout << player2 << ", please place third battleship." << endl;
+            Battleship p2ShipC;
+            setShips(p2ShipC, p2Board, size, x1, y1, x2, y2);
+            //Place battleship for player2
+            cout << player2 << ", please place fourth battleship." << endl;
+            Battleship p2ShipD;
+            setShips(p2ShipD, p2Board, size, x1, y1, x2, y2);
         
-        do
-        {
-            //display player1 attack board
-            p1BoardA().displayBoard();
-            Attack(player1, &xCoordinate, &yCoordinates);
-
-            //updateboard
-            cout << player1 << "'s attack board is updated!" << endl;
-            //check player2 board[xCoordinate][yCoordinate]for hit
-            
-            if (hit == true)
+            do
             {
-                //Check gameOver
-                hit = false;
-            }
+                //display player1 attack board
+                p1BoardA().displayBoard();
+                Attack(player1, &xCoordinate, &yCoordinates);
 
-            //Player2's turn
+                //updateboard
+                cout << player1 << "'s attack board is updated!" << endl;
+                //check player2 board[xCoordinate][yCoordinate]for hit
+                hit=hitSuccess(p2Board, xCoordinate, yCoordinates);
+                if (hit == true)
+                {
+                    //Check gameOver
+                    gameOver=GameOver(p1BoardA, p2Board);
+                    hit = false;
+                }
 
-            //display player2 attack board
-            p2BoardA().displayBoard();
-            Attack(player2, &xCoordinate, &yCoordinates);
+                //Player2's turn
 
-            //updateboard
-            cout << player2 << "'s attack board is updated!" << endl;
+                //display player2 attack board
+                p2BoardA().displayBoard();
+                Attack(player2, &xCoordinate, &yCoordinates);
 
-            //check player1 board[xCoordinate][yCoordinate]for hit
-
-            if (hit == true)
-            {
-                //Update gameOver
-                hit = false;
-            }
-
-        } while (gameOver != true);
-
-
-
-        //Play the game again confirmation
-        do{
-            cout << "Do you want to play again? (Y/N)" << endl;
-            cin >> response;
-            if (response == "Y")
-            {
-                playAgain = true;
-                cout << "I want to play again" << endl;
-            }
-            else
-            {
-                playAgain =false;
-                cout << "Exiting Game" << endl;
-            }
-        } while (response != "Y" || response != "N");
-       
+                //updateboard
+                cout << player2 << "'s attack board is updated!" << endl;
+        
+                //check player1 board[xCoordinate][yCoordinate]for hit
+                hit=hitSuccess(p1Board, xCoordinate,yCoordinates);
+                
+                if (hit == true)
+                {
+                    //Update gameOver
+                    gameOver=GameOver(p2BoardA, p1Board);
+                    hit = false;
+                }
+        
+            } while (gameOver != true);
+        }    
+        else if (choice == 2)    
+        {        
+            cout << "Goodbye for now." << endl;
+            playAgain=false;
+        }  
     }
-    
-
-
     return 0;
 };
+
+bool hitSuccess(Board b[][], int x, int y)
+{
+    if (b[x][y]=='X')
+    {
+     return true;   
+    }
+}
+
 void Attack(string name, int* x, int* y)
 {
     *x = -1;
@@ -164,6 +171,7 @@ void Attack(string name, int* x, int* y)
         }
     } while (*x==-1||*y==-1);
 }
+
 void setShips(Battleship ship,Board b,int size, int x1, int y1, int x2, int y2)
 {
     bool error = true;
@@ -190,5 +198,33 @@ void setShips(Battleship ship,Board b,int size, int x1, int y1, int x2, int y2)
 
 
     ship.placeShip(b, size, x1, y1, x2, y2);
+}
+
+void displayMenu()
+{
+    cout << "****************************************" << endl;    
+    cout << "*            BattleShip Game           *" << endl;
+    cout << "*                  By                  *" << endl; 
+    cout << "*   A. Harper, J. Minor, & J. Minor    *" << endl;    
+    cout << "****************************************" << endl;  
+    cout << "* 1. Play game. Enter players' names.  *" << endl; 
+    cout << "* 2. Exit game.                        *" << endl; 
+    cout << "****************************************" << endl;
+}
+
+bool gameOver(Board attacker[][], Board victim[][])
+{
+    int size =10;
+    for(int i=0;i<size;i++)
+    {
+        for(int j=0;j<size;j++)
+        {
+          if (attacker[i][j]!=victim[i][j])
+          {
+              return false;
+          }
+        }
+    }
+    return true;
 }
 
