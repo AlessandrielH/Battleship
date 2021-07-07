@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+
+// Create a ship class with some attributes
+class Ship {
+  public:
+	string nameofShip;
+	char orientation;
+	int xCoor;
+	int yCoor;
+};
+
+int main() {
+  // Create a Ship 1
+  Ship shipPlacement1;
+  shipPlacement1.nameofShip="Conquerer";
+  shipPlacement1.orientation;
+  shipPlacement1.xCoor;
+  shipPlacement1.yCoor;
+  
+  cout<< shipPlacement1.nameofShip<<" is your 1st ship. It is 1 unit long: "; 
+  cout<< "Do you want " <<shipPlacement1.nameofShip<< " to be verticle or horizontal? v/h: ";
+  cin>>shipPlacement1.orientation;
+  cout<< "Please enter the x and y coordinates of " <<shipPlacement1.nameofShip<< " separated by a space: ";
+  cin>>shipPlacement1.xCoor>> shipPlacement1. yCoor;
+  
+  // Create Ship 2
+  Ship shipPlacement2;
+  shipPlacement2.nameofShip= "Captain";
+  shipPlacement2.orientation;
+  shipPlacement2.xCoor;
+  shipPlacement2.yCoor;
+  
+  cout<< shipPlacement2.nameofShip<<" is your 2nd ship. It is 2 units long: "; 
+  cout<< "Do you want " <<shipPlacement2.nameofShip<< " to be verticle or horizontal? v/h: ";
+  cin>>shipPlacement2.orientation;
+  cout<< "Please enter the x and y coordinates of " <<shipPlacement2.nameofShip<< " separated by a space: ";
+  cin>>shipPlacement2.xCoor>> shipPlacement2. yCoor;
+
+ // Create Ship 3
+  Ship shipPlacement3;
+  shipPlacement3.nameofShip= "Victory";
+  shipPlacement3.orientation;
+  shipPlacement3.xCoor;
+  shipPlacement3.yCoor;
+  
+  cout<< shipPlacement3.nameofShip<<" is your 3rd ship. It is 3 units long: "; 
+  cout<< "Do you want " <<shipPlacement3.nameofShip<< " to be verticle or horizontal? v/h: ";
+  cin>>shipPlacement3.orientation;
+  cout<< "Please enter the x and y coordinates of " <<shipPlacement3.nameofShip<< " separated by a space: ";
+  cin>>shipPlacement3.xCoor>> shipPlacement3. yCoor;
+
+// Create Ship 4
+  Ship shipPlacement4;
+  shipPlacement4.nameofShip= "Talent";
+  shipPlacement4.orientation;
+  shipPlacement4.xCoor;
+  shipPlacement4.yCoor;
+  
+  cout<< shipPlacement4.nameofShip<<" is your 4th ship. It is 4 units long: "; 
+  cout<< "Do you want " <<shipPlacement4.nameofShip<< " to be verticle or horizontal? v/h: ";
+  cin>>shipPlacement4.orientation;
+  cout<< "Please enter the x and y coordinates of " <<shipPlacement4.nameofShip<< " separated by a space: ";
+  cin>>shipPlacement4.xCoor>> shipPlacement4. yCoor;
+  return 0;
+}
