@@ -15,12 +15,19 @@ int Board::getSize()
 void Board::displayBoard(const char battleboard[][boardsize], const int s)
 {
     //prints board
+    cout << "   ";
+    for (int a = 0; a < s; a++)
+    {
+        cout<< a << "|";
+    }
+    cout << endl;
     for (int i = 0; i < s; i++)
     {
+        cout << "|" << i << "|";
         for (int j = 0; j < s; j++)
         {
-            cout << battleboard[i][j];
-        }
+            cout << battleboard[i][j]<<"|";
+        }   
         cout << endl;
     }
 }
@@ -28,13 +35,19 @@ void Board::displayBoard(const char battleboard[][boardsize], const int s)
 void Board::displayBoard()
 {
     int s = boardsize;
-    //prints board
+    cout << "   ";
+    for (int a = 0; a < s; a++)
+    {
+        cout<< a << "|";
+    }
+    cout << endl;
     for (int i = 0; i < s; i++)
     {
+        cout << "|" << i << "|";
         for (int j = 0; j < s; j++)
         {
-            cout << board[i][j];
-        }
+            cout << board[i][j]<<"|";
+        }   
         cout << endl;
     }
 }
