@@ -13,7 +13,18 @@ void Attack(string, int*, int*);
 bool hitSuccess(Board, int, int);
 void setShips(Battleship, Board,int, int, int, int, int);
 bool GameOver( Board, Board);
-void displayMenu();
+
+void displayMenu()
+{
+    cout << "****************************************" << endl;    
+    cout << "*            BattleShip Game           *" << endl;
+    cout << "*                  By                  *" << endl; 
+    cout << "*   A. Harper, J. Minor, & J. Minor    *" << endl;    
+    cout << "****************************************" << endl;  
+    cout << "* 1. Play game. Enter players' names.  *" << endl; 
+    cout << "* 2. Exit game.                        *" << endl; 
+    cout << "****************************************" << endl;
+}
 
 int main()
 {
@@ -198,18 +209,6 @@ void setShips(Battleship ship,Board b,int size, int x1, int y1, int x2, int y2)
 
 
     ship.placeShip(b, size, x1, y1, x2, y2);
-}
-
-void displayMenu()
-{
-    cout << "****************************************" << endl;    
-    cout << "*            BattleShip Game           *" << endl;
-    cout << "*                  By                  *" << endl; 
-    cout << "*   A. Harper, J. Minor, & J. Minor    *" << endl;    
-    cout << "****************************************" << endl;  
-    cout << "* 1. Play game. Enter players' names.  *" << endl; 
-    cout << "* 2. Exit game.                        *" << endl; 
-    cout << "****************************************" << endl;
 }
 
 bool gameOver(Board attacker[][], Board victim[][])
