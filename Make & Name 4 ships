@@ -33,7 +33,23 @@ public:
     }
     int place() //to place ships on board
     {
-
+void setShipPlacement(Board b, int size)
+{
+    if (orientation=='v')
+    {
+        for (int i=0;i<size;i++)
+        {
+            b.setShip((x+i),y);
+        }
+    }
+    else if(orientation=='h')
+    {
+       for (int i=0;i<size;i++)
+        {
+            b.setShip(x,(y+i));
+        } 
+    }
+}
 
 private:
     char orientation;
@@ -41,7 +57,6 @@ private:
     int yCoor;
 
    };
-
 
 int main()
 {
@@ -61,6 +76,7 @@ int main()
     cout << "Enter the y coordinate for your ship: ";
     cin >> y;
     ShipPlacement1.setyCoor(y);
+   
 
  //get input for ship 2
     cout << "Your 2nd ship is named Captain. It is 4 units long. Do you want it to be vertical or horizontal? Enter v or h: ";
