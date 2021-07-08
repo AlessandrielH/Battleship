@@ -7,6 +7,9 @@
 #include "Board.h"
 #include "Ship.h"
 
+const int COL=10;
+const int ROW=10;
+
 using namespace std;
 
 void Attack(string, int*, int*);
@@ -32,13 +35,17 @@ int main()
     while (playAgain == true)
     {
         string player1;//player1 name
-        string player2;//plater2 name
+        string player2;//player2 name
+        int x1, x2, y1, y2;//ship placement coordinants
+
         int xCoordinate, yCoordinates;//attack coordinates
         bool gameOver=false;
-        bool hit = false;//ataack verification
+        bool hit = false;//attack verification
         
-        Board p1BoardA();
-        Board p2BoardA();
+        Board p1BoardA;
+        Board p2BoardA;
+        p1BoardA();
+        p2BoardA();
          
         displayMenu();
         int choice;  
@@ -57,6 +64,7 @@ int main()
             // builds the gameboard for player1
             cout << "Creating board for " << player1 << endl;
             Board p1Board;
+            p1Board();
             p1Board.createBoard();
             p1Board.displayBoard();
 
@@ -66,11 +74,12 @@ int main()
             // builds the gameboard for player2
             cout << "Creating board for " << player2 << endl;
             Board p2Board;
+            p2Board();
             p2Board.createBoard();
             p2Board.displayBoard();
 
             //Place battleship for player2
-           
+
         
             do
             {
@@ -118,9 +127,9 @@ int main()
     }
     return 0;
 };
-bool hitSuccess(Board b[][], int x, int y)
+bool hitSuccess(Board b, int x, int y)
 {
-    if (b[x][y]=='X')
+    if (b.confirmHit(x,y))=='X')
     {
      return true;   
     }
@@ -138,10 +147,10 @@ void Attack(string name, int* x, int* y)
         cout << name << ", enter the y-coordinates: ";
         cin >> tempY;
 
-        if (tempX < 0 || tempX>10 || tempY < 0 || tempY>10)
+        if (tempX < 0 || tempX>COL || tempY < 0 || tempY>ROW)
         {
             cout << name << "Incorrect x or y coordinants." << endl;
-            cout << "Coordinants must range from 0-10." << endl;
+            cout << "Coordinants must range from 0-"<<COL<<"." << endl;
         }
         else
         {
@@ -151,14 +160,14 @@ void Attack(string name, int* x, int* y)
     } while (*x==-1||*y==-1);
 }
 
-bool gameOver(Board attacker[][], Board victim[][])
+bool gameOver(Board attacker, Board victim)
 {
-    int size =10;
+    int size =COL;
     for(int i=0;i<size;i++)
     {
         for(int j=0;j<size;j++)
         {
-          if (attacker[i][j]!=victim[i][j])
+          if (attacker.confirmHit(i,j)!=victim.confirmHit(i,j))
           {
               return false;
           }
@@ -166,3 +175,4 @@ bool gameOver(Board attacker[][], Board victim[][])
     }
     return true;
 }
+

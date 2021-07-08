@@ -12,24 +12,10 @@ int Board::getSize()
 {
     return boardsize;
 }
-void Board::displayBoard(const char battleboard[][boardsize], const int s)
+
+char Board::confirmHit(int x, int y)
 {
-    //prints board
-    cout << "   ";
-    for (int a = 0; a < s; a++)
-    {
-        cout<< a << "|";
-    }
-    cout << endl;
-    for (int i = 0; i < s; i++)
-    {
-        cout << "|" << i << "|";
-        for (int j = 0; j < s; j++)
-        {
-            cout << battleboard[i][j]<<"|";
-        }   
-        cout << endl;
-    }
+    return board[x][y];
 }
 
 void Board::displayBoard()
@@ -49,17 +35,6 @@ void Board::displayBoard()
             cout << board[i][j]<<"|";
         }   
         cout << endl;
-    }
-}
-
-void Board:: createBoard(char battleboard[][boardsize], const int s)
-{
-    for (int i = 0; i < s; i++)
-    {
-        for (int j = 0; j < s; j++)
-        {
-            battleboard[i][j] = '~';//inputs ''~ into every position
-        }
     }
 }
 
