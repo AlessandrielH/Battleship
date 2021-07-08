@@ -3,18 +3,9 @@ class ShipPlacement
 public:
     ShipPlacement()
     {
-       nameofShip;
        orientation;
        xCoor;
        yCoor;
-    }
-    void setnameofShip(string n)
-    {
-        nameofShip= n;
-    }
-    string getnameofShip()
-    {
-        return nameofShip;
     }
     void setorientation(char o)
     {
@@ -45,7 +36,6 @@ public:
 
 
 private:
-    string nameofShip;
     char orientation;
     int xCoor;
     int yCoor;
@@ -58,15 +48,11 @@ int main()
     //create four ShipPlacement objects    
     ShipPlacement ShipPlacement1, ShipPlacement2, ShipPlacement3, ShipPlacement4;  
     //declare variables for input
-    string n;
     char o;
     int x, y; 
     
     //get input for ship 1
-    cout << "Enter the name of your first ship: " << endl;
-    cin >> n;
-    ShipPlacement1.setnameofShip(n);
-    cout << "Do you want your ship to be vertical or horizontal? Enter v or h: ";
+    cout << "Your 1st ship is named Conqueror. It is 3 units long. Do you want it to be vertical or horizontal? Enter v or h: ";
     cin >> o;
     ShipPlacement1.setorientation(o);
     cout << "Enter the x coordinate for your ship: ";
@@ -76,4 +62,36 @@ int main()
     cin >> y;
     ShipPlacement1.setyCoor(y);
 
+ //get input for ship 2
+    cout << "Your 2nd ship is named Captain. It is 4 units long. Do you want it to be vertical or horizontal? Enter v or h: ";
+    cin >> o;
+    ShipPlacement2.setorientation(o);
+    cout << "Enter the x coordinate for your ship: ";
+    cin >> x;
+    ShipPlacement2.setxCoor(x);
+    cout << "Enter the y coordinate for your ship: ";
+    cin >> y;
+    ShipPlacement2.setyCoor(y);
+
+    //get input for ship 3
+    cout << "Your 3rd ship is named Victory. It is 5 units long. Do you want it to be vertical or horizontal? Enter v or h: ";
+    cin >> o;
+    ShipPlacement3.setorientation(o);
+    cout << "Enter the x coordinate for your ship: ";
+    cin >> x;
+    ShipPlacement3.setxCoor(x);
+    cout << "Enter the y coordinate for your ship: ";
+    cin >> y;
+    ShipPlacement3.setyCoor(y);
+
+ //get input for ship 4
+     cout << "Your 4th ship is named Talent. It is 6 units long. Do you want it to be vertical or horizontal? Enter v or h: ";
+    cin >> o;
+    ShipPlacement4.setorientation(o);
+    cout << "Enter the x coordinate for your ship: ";
+    cin >> x;
+    ShipPlacement4.setxCoor(x);
+    cout << "Enter the y coordinate for your ship: ";
+    cin >> y;
+    ShipPlacement4.setyCoor(y);      
 }
