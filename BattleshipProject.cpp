@@ -33,12 +33,12 @@ int main()
     while (playAgain == true)
     {
         string player1;//player1 name
-        string player2;//plater2 name
+        string player2;//player2 name
         int x1, x2, y1, y2;//ship placement coordinants
         int xCoordinate, yCoordinates;//attack coordinates
         int size = 3;//Ship size
         bool gameOver=false;
-        bool hit = false;//ataack verification
+        bool hit = false;//attack verification
         
         Board p1BoardA();
         Board p2BoardA();
@@ -68,7 +68,7 @@ int main()
             cout << player1 << ", please place first battleship." << endl;
             setShips(p1ShipA,p1Board, size, x1, y1, x2, y2);
             //Place battleship for player1
-            cout << player1 << ", please plase second battleship." << endl;
+            cout << player1 << ", please place second battleship." << endl;
             Battleship p1ShipB;
             setShips(p1ShipB, p1Board, size, x1, y1, x2, y2);
             //Place battleship for player1
@@ -91,7 +91,7 @@ int main()
             Battleship p2ShipA;
             setShips(p2ShipA, p2Board, size, x1, y1, x2, y2);
             //Place battleship for player2
-            cout << player2 << ", please plase second battleship." << endl;
+            cout << player2 << ", please place second battleship." << endl;
             Battleship p2ShipB;
             setShips(p2ShipB, p2Board, size, x1, y1, x2, y2);
             //Place battleship for player2
@@ -225,3 +225,4 @@ bool gameOver(Board attacker[][], Board victim[][])
     }
     return true;
 }
+
