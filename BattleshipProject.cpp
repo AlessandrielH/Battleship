@@ -7,6 +7,9 @@
 #include "Board.h"
 #include "Battleship.h"
 
+const int COL=10;
+const int ROW=10;
+
 using namespace std;
 
 void Attack(string, int*, int*);
@@ -40,8 +43,10 @@ int main()
         bool gameOver=false;
         bool hit = false;//ataack verification
         
-        Board p1BoardA();
-        Board p2BoardA();
+        Board p1BoardA;
+        Board p2BoardA;
+        p1BoardA();
+        p2BoardA();
          
         displayMenu();
         int choice;  
@@ -60,6 +65,7 @@ int main()
             // builds the gameboard for player1
             cout << "Creating board for " << player1 << endl;
             Board p1Board;
+            p1Board();
             p1Board.createBoard();
             p1Board.displayBoard();
 
@@ -83,6 +89,7 @@ int main()
             // builds the gameboard for player2
             cout << "Creating board for " << player2 << endl;
             Board p2Board;
+            p2Board();
             p2Board.createBoard();
             p2Board.displayBoard();
 
@@ -149,9 +156,9 @@ int main()
     }
     return 0;
 };
-bool hitSuccess(Board b[][], int x, int y)
+bool hitSuccess(Board b, int x, int y)
 {
-    if (b[x][y]=='X')
+    if (b.confirmHit(x,y))=='X')
     {
      return true;   
     }
@@ -169,10 +176,10 @@ void Attack(string name, int* x, int* y)
         cout << name << ", enter the y-coordinates: ";
         cin >> tempY;
 
-        if (tempX < 0 || tempX>10 || tempY < 0 || tempY>10)
+        if (tempX < 0 || tempX>COL || tempY < 0 || tempY>ROW)
         {
             cout << name << "Incorrect x or y coordinants." << endl;
-            cout << "Coordinants must range from 0-10." << endl;
+            cout << "Coordinants must range from 0-"<<COL<<"." << endl;
         }
         else
         {
@@ -210,14 +217,14 @@ void setShips(Battleship ship,Board b,int size, int x1, int y1, int x2, int y2)
     ship.placeShip(b, size, x1, y1, x2, y2);
 }
 
-bool gameOver(Board attacker[][], Board victim[][])
+bool gameOver(Board attacker, Board victim)
 {
-    int size =10;
+    int size =COL;
     for(int i=0;i<size;i++)
     {
         for(int j=0;j<size;j++)
         {
-          if (attacker[i][j]!=victim[i][j])
+          if (attacker.confirmHit(i,j)!=victim.confirmHit(i,j))
           {
               return false;
           }
