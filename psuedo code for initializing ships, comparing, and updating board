@@ -1,0 +1,3 @@
+//The ships need to be initialized and called at least once for each player.
+//Update board after attack.
+//Compare board after attack. 
