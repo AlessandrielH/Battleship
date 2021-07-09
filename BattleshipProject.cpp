@@ -180,7 +180,7 @@ bool gameOver(Board attacker, Board victim, string name)
           }
         }
     }
-    cout << "Congratulations " << name << "! You have won the game!" << endl;
+    cout << "Congratulations, " << name << "! You have won the game!" << endl;
     return true;
     
 }
