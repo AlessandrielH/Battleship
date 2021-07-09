@@ -14,7 +14,7 @@ using namespace std;
 
 void Attack(string, int*, int*);
 bool hitSuccess(Board, int, int);
-bool GameOver( Board, Board);
+bool GameOver( Board, Board, string);
 
 void displayMenu()
 {
@@ -101,7 +101,7 @@ int main()
                 if (hit == true)
                 {
                     //Check gameOver
-                    gameOver=GameOver(p1BoardA, p2Board);
+                    gameOver=GameOver(p1BoardA, p2Board, player1);
                     hit = false;
                 }
 
@@ -120,7 +120,7 @@ int main()
                 if (hit == true)
                 {
                     //Update gameOver
-                    gameOver=GameOver(p2BoardA, p1Board);
+                    gameOver=GameOver(p2BoardA, p1Board, player2);
                     hit = false;
                 }
         
@@ -167,7 +167,7 @@ void Attack(string name, int* x, int* y)
     } while (*x==-1||*y==-1);
 }
 
-bool gameOver(Board attacker, Board victim)
+bool gameOver(Board attacker, Board victim, string name)
 {
     int size =COL;
     for(int i=0;i<size;i++)
@@ -180,6 +180,8 @@ bool gameOver(Board attacker, Board victim)
           }
         }
     }
+    cout << "Congratulations " << name << "! You have won the game!" << endl;
     return true;
+    
 }
 
