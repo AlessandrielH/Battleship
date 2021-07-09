@@ -49,6 +49,14 @@ public:
 	~Purpose:   retrieves the value on the board                        ~
 	~         at position(xCoord,yCoord)                                ~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	void setShip(int x, int y);
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~Accepted: int x, int y                                             ~
+	~Return: nothing                                                    ~
+	~Purpose:   places a ship on the board at the                       ~
+	~            position(xCoord,yCoord), sets that position to '1'     ~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 };
 
