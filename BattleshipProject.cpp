@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 #include "Board.h"
-#include "Ship.h"
+#include "ShipPlacement.h"
 
 const int COL=10;
 const int ROW=10;
