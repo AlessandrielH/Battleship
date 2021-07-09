@@ -69,7 +69,14 @@ int main()
             p1Board.displayBoard();
 
             //Place battleship for player1
-
+            ShipPlacement p1Ships;
+            p1Ships.setShips();
+            cout<<"Set the x-coordinate for the beginninng of the ship:";
+            cin>>xCoordinate;
+            cout<<"Set the y-coordinate for the beginning of the ship:";
+            cin>>yCoordinates;
+            p1Ships.placeShips(xCoordinate, yCoordinate);
+            p1Ships.setShipPlacement(p1Board);
 
             // builds the gameboard for player2
             cout << "Creating board for " << player2 << endl;
