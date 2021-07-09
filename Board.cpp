@@ -54,3 +54,15 @@ void Board::setShip(int x, int y)
 {
     board[x,y]='1';
 }
+
+void Board::updateBoard(bool hit, int x, int y) //This function updates the board after attack
+{
+    if (hit==true)
+    {
+       board[x][y]='H'; //the letter H shows that this ship has been hit
+    }
+    else 
+    {
+       board[x][y]='M'; //the letter M shows that this spot is a miss because no ship was placed there
+    }
+}
