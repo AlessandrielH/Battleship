@@ -1,24 +1,31 @@
 #include <iostream>
 #include "Board.h"
 
-class ShipPlacement
+class ShipPlacement // n
 {
     private:
-	char orientation;
-	int xCoord;
-	int yCoord;
+	char orientation; // orientation refers to ship's position vertical or horizontal
+	int xCoord; // x coordinate
+	int yCoord; // y coordinate
 
 	const int shipNames = 4;
-	string names [shipNames]= {"Conqueror", "Captain", "Victory", "Talent"};
+	string names [shipNames]= {"Conqueror", "Captain", "Victory", "Talent"}; //names of ships to be placed by players
 
 	const int ordinalNo = 4;
-	string oNos [ordinalNo]= {"1st", "2nd", "3rd", "4th"};
+	string oNos [ordinalNo]= {"1st", "2nd", "3rd", "4th"}; //ships are numbered, respectively
 
 	const int unitsLong = 4;
-	int units [unitsLong]= {3, 4, 5, 6};
+	int units [unitsLong]= {3, 4, 5, 6}; // the length of the respective ships are 3 units, 4 units, 5 units, & 6th units
+
 
 public:
 	void placeShips(char o, int x, int y)
+	/* this function accepts: 3 variables to store char orientation, int x coordinate, int y coordinate.
+	   No values returned.
+	   Stores orientation (v for vertical, h for horizontal) that user inputs.
+	   Stores x and y coordinates from user.
+	*/
+	
 	{
 		orientation = o;
 		xCoord = x;
@@ -27,20 +34,20 @@ public:
 
 	}
 
-	void setShipPlacement(Board b, int size)
+	void setShipPlacement(Board b, int size) //  Board b refers to Board file
 	{
-    		if (orientation=='v')
+    		if (orientation=='v') // v is vertical ship placement, size of ship increments by 1 unit
 		{
 			for (int i=0;i<size;i++)
 			{
-		   		b.setShip((x+i),y);
+		   		b.setShip((x+i),y); // b refers to Board file
 			}
 	   	}
-	    	else if(orientation=='h')
+	    	else if(orientation=='h') // h is horizontal ship placement, size of ship increments by 1 unit
 	    	{
 	       		for (int i=0;i<size;i++)
 			{
-			    b.setShip(x,(y+i));
+			    b.setShip(x,(y+i)); // b refers to Board file
 			} 
 	    	}
 	}
@@ -51,9 +58,9 @@ void setShip()
     
 for (int n=0; n<4; n++) 
 {
-    cout << "Your "<< oNos[n] << " ship is named "<< names [n]<<endl;
-    cout << "This ship is "<<units[n]<< " long."; 
-    cout << "Do you want it to be vertical or horizontal: v/h? ";
+    cout << "Your "<< oNos[n] << " ship is named "<< names [n]<<endl; //oNos is ordinal number
+    cout << "This ship is "<<units[n]<< " long."; //units refers to the length of the ship
+    cout << "Do you want it to be vertical or horizontal: v/h? "; // v and h refers to the orientation 
 
 }
 }
