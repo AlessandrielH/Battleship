@@ -60,7 +60,24 @@ private:
 
 int main()
 {
-    //create four ShipPlacement objects    
+   
+const int shipNames = 4;
+string names [shipNames]= {"Conqueror", "Captain", "Victory", "Talent"};
+
+const int ordinalNo = 4;
+string oNos [ordinalNo]= {"1st", "2nd", "3rd", "4th"};
+
+const int unitsLong = 4;
+int units [unitsLong]= {3, 4, 5, 6};
+
+	
+for (int n=0; n<4; n++) 
+{
+    cout << "Your "<< oNos[n] << " ship is named "<< names [n]<<endl;
+    cout << "This ship is "<<units[n]<< " long."; 
+    cout << "Do you want it to be vertical or horizontal: v/h? ";
+   
+   //create four ShipPlacement objects    
     ShipPlacement ShipPlacement1, ShipPlacement2, ShipPlacement3, ShipPlacement4;  
     //declare variables for input
     char o;
