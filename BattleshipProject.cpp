@@ -104,11 +104,13 @@ int main()
                     gameOver=GameOver(p1BoardA, p2Board);
                     hit = false;
                 }
+                
+                p1BoardA().displayBoard();
 
                 //Player2's turn
 
                 //display player2 attack board
-                p2BoardA().displayBoard();
+                p2BoardA().displayBoard();//before the attack
                 Attack(player2, &xCoordinate, &yCoordinates);
 
                 //updateboard
@@ -123,6 +125,8 @@ int main()
                     gameOver=GameOver(p2BoardA, p1Board);
                     hit = false;
                 }
+                
+                p2BoardA().displayBoard();
         
             } while (gameOver != true);
         }    
