@@ -35,11 +35,13 @@ public:
 	~Purpose:  display the board                                        ~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	void updateBoard();
+	void updateBoard(bool hit, int x, int y);
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	~No values accepted                                                 ~
+	~Accepts: bool hit, int x, int y                                    ~
 	~No values returned                                                 ~
-	~Purpose:   adds an attack to the board                             ~
+	~Purpose:   adds an attack to the board. 'M' will be entered at     ~
+	~          board[x][y] if the attack missed.  'H' will be entered   ~
+	~          if attack hit a battleship.                              ~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 	char confirmHit(int xCoord, int yCoord);
