@@ -59,6 +59,8 @@ public:
 	~Purpose:   places a ship on the board at the                       ~
 	~            position(xCoord,yCoord), sets that position to '1'     ~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	bool compareBoard(Board b);
 
 };
 
