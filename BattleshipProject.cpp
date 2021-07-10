@@ -178,16 +178,12 @@ void Attack(string name, int* x, int* y, Board b)
 
 bool GAMEOVER(Board attacker, Board victim)
 {
-    int size = COL;
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < size; j++)
-        {
-            if (attacker.confirmHit(i, j) != victim.confirmHit(i, j))
-            {
-                return false;
-            }
-        }
+    if (victim.compareBoard(attacker)==false)
+    {        
+        return false;
     }
-    return true;
+    else
+    {
+        return true;
+    }
 }
