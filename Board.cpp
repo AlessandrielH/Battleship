@@ -52,7 +52,7 @@ void Board::createBoard()
 
 void Board::setShip(int x, int y)
 {
-    board[x][ y] = '1';
+    board[x][ y] = 'X';
 }
 
 void Board::updateBoard(bool hit, int x, int y) //This function updates the board after attack
