@@ -5,10 +5,10 @@ using namespace std;
 	
 	void ShipPlacement::placeShips(char o, int x, int y)
 		/* this function accepts: 3 variables to store char orientation, int x coordinate, int y coordinate.
-			   No values returned.
-			   Stores orientation (v for vertical, h for horizontal) that user inputs.
-			   Stores x and y coordinates from user.
-			*/
+		No values returned.
+		Stores orientation (v for vertical, h for horizontal) that user inputs.
+		Stores x and y coordinates from user.
+		*/
 	{
 		orientation = o;
 		xCoord = x;
