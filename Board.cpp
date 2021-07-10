@@ -24,7 +24,7 @@ void Board::displayBoard()
     cout << "   ";
     for (int a = 0; a < s; a++)
     {
-        cout<< a << "|";
+        cout << a << "|";
     }
     cout << endl;
     for (int i = 0; i < s; i++)
@@ -32,8 +32,8 @@ void Board::displayBoard()
         cout << "|" << i << "|";
         for (int j = 0; j < s; j++)
         {
-            cout << board[i][j]<<"|";
-        }   
+            cout << board[i][j] << "|";
+        }
         cout << endl;
     }
 }
@@ -52,17 +52,5 @@ void Board::createBoard()
 
 void Board::setShip(int x, int y)
 {
-    board[x,y]='1';
-}
-
-void Board::updateBoard(bool hit, int x, int y) //This function updates the board after attack
-{
-    if (hit==true)
-    {
-       board[x][y]='H'; //the letter H shows that this ship has been hit
-    }
-    else 
-    {
-       board[x][y]='M'; //the letter M shows that this spot is a miss because no ship was placed there
-    }
+    board[x][ y] = '1';
 }
