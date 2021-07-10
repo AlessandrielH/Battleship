@@ -140,7 +140,7 @@ bool hitSuccess(Board b, int x, int y)
     }
 }
 
-void Attack(string name, int* x, int* y)
+void Attack(string name, int* x, int* y, Board b)
 {
     *x = -1;
     *y = -1;
@@ -154,14 +154,25 @@ void Attack(string name, int* x, int* y)
 
         if (tempX < 0 || tempX>COL || tempY < 0 || tempY>ROW)
         {
+
+            cout << name << "Incorrect x or y coordinates." << endl;
+            cout << "Coordinants must range from 0-"<<COL<<"." << endl;
             cout << name << "Incorrect x or y coordinants." << endl;
             cout << "Coordinants must range from 0-" << COL << "." << endl;
         }
+        
         else
         {
-            *x = tempX;
-            *y = tempY;
+            if  (B.confirmHit (tempX,tempY) == 'H' || B.confirmHit (tempX,tempY) == 'M')
+                cout << name << "You have entered those x and y coordinates already!"<< endl;
+            
+            else
+            {
+                *x = tempX;
+                *y = tempY;
+            }
         }
+
     } while (*x == -1 || *y == -1);
 }
 
