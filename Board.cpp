@@ -71,9 +71,9 @@ bool compareBoard(Board b)
 {
     bool gameOver=false;
     int count=0;
-    for(int i=0;i<battleboard;i++)
+    for(int i=0;i<boardsize;i++)
     {
-        for (int j=0;j<battleboard;J++)
+        for (int j=0;j<boardsize;J++)
         {
             if(b.confirmHit(i,j)=='H' && this.confirmHit(i,j)=='X')
             {
