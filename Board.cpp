@@ -66,3 +66,24 @@ void Board::updateBoard(bool hit, int x, int y) //This function updates the boar
        board[x][y]='M'; //the letter M shows that this spot is a miss because no ship was placed there
     }
 }
+
+bool compareBoard(Board b)
+{
+    bool gameOver=false;
+    int count=0;
+    for(int i=0;i<battleboard;i++)
+    {
+        for (int j=0;j<battleboard;J++)
+        {
+            if(b.confirmHit(i,j)=='H' && this.confirmHit(i,j)=='X')
+            {
+                count++;
+                if(count==18)
+                {
+                    gameOver=true;
+                }
+            }
+        }
+    }
+    return gameOver;
+}
