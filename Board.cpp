@@ -52,5 +52,5 @@ void Board::createBoard()
 
 void Board::setShip(int x, int y)
 {
-    board[x][ y] = '1';
+    board[x][ y] = 'X';
 }
