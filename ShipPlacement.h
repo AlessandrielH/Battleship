@@ -10,15 +10,13 @@ class ShipPlacement
 		char orientation='o'; // orientation refers to ship's position vertical or horizontal
 		int xCoord; // x coordinate
 		int yCoord; // y coordinate
+		static const int NUM_OF_SHIPS = 4;
 
-		static const int shipNames = 4;
-		string names[shipNames] = { "Conqueror", "Captain", "Victory", "Talent" }; //names of ships to be placed by players
+		string names[NUM_OF_SHIPS] = { "Conqueror", "Captain", "Victory", "Talent" }; //names of ships to be placed by players
 
-		static const int ordinalNo = 4;
-		string oNos[ordinalNo] = { "1st", "2nd", "3rd", "4th" }; //ships are numbered, respectively
+		string oNos[NUM_OF_SHIPS] = { "1st", "2nd", "3rd", "4th" }; //ships are numbered, respectively
 
-		static const int unitsLong = 4;
-		int units[unitsLong] = { 3, 4, 5, 6 }; // the length of the respective ships are 3 units, 4 units, 5 units, & 6th units
+		int units[NUM_OF_SHIPS] = { 3, 4, 5, 6 }; // the length of the respective ships are 3 units, 4 units, 5 units, & 6th units
 
 
 	public:
