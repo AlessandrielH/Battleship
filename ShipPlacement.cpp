@@ -23,27 +23,28 @@ using namespace std;
 			setShipPlacement(b);
 		}
 		
-		xCoord = x;
-		yCoord = y;
-		cout << orientation << " " << xCoord << " " << yCoord;
-		
 		//jgminor7 added code below so user doesn't place a ship out-of-bounds of board area
 		do 
 		    {
 
-			(if board.xCoord < 1 || board.xCoord >9  ) //const int COL = 10
-			(if board.yCoord < 1 || board.yCoord >9  )//const int ROW = 10;
-			/*Is there a separate statement for x coordinte and y coordinate? 
-			Should I refer to COL and ROW, instead of xCoord and yCoord? */
+			(if xCoord < 0 || xCoord >9 || yCoord < 0 || yCoord >9  ) //const int COL = 10 //const int ROW = 10;
+			{
+				/*Is there a separate statement for x coordinte and y coordinate? 
+				Should I refer to COL and ROW, instead of xCoord and yCoord? */
 
-			cout<<"Your coordinates are out of bounds. Please enter valid x coordinate and y coordinate within 1 to 9.";
-			//Is it 1- 9 or 1 -10?
+				cout<<"Your coordinates are out of bounds.\n"; 
+				cout<<"Please enter valid x coordinate and y coordinate within 0 to 9."<< endl;
+				cout << "Set the x-coordinate for the beginninng of the ship:";
+				cin >> xCoord;
+				cout << "Set the y-coordinate for the beginning of the ship:";
+				cin >> yCoord;
+			}
+		    } while(xCoord < 0 || xCoord >9 || yCoord < 0 || yCoord >9  );
 		
-			cout << "Set the x-coordinate for the beginninng of the ship:";
-			cin >> xCoord;
-			cout << "Set the y-coordinate for the beginning of the ship:";
-			cin >> yCoord;
-		    }
+		xCoord = x;
+		yCoord = y;
+		cout << orientation << " " << xCoord << " " << yCoord;
+		
 	}
 	char ShipPlacement::getOrientation()
 	{
