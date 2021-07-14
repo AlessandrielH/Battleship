@@ -51,15 +51,21 @@ int main()
         int choice;
         cout << "Select an option from the menu above. ";
         cin >> choice;
+        while(choice < 1 || choice > 2) 
+            {
+                cout << "Invalid choice, please enter 1 or 2: ";
+                cin >> choice;
+            }
         if (choice == 1)
-        {
-            string player1, player2;
-            cout << "Enter player 1's name: ";
-            cin >> player1;
-            cout << "Hello " << player1 << ". " << endl;
-            cout << "Enter player 2's name: ";
-            cin >> player2;
-            cout << "Hello " << player2 << ". " << endl;
+            {
+                string player1, player2;
+                cout << "Enter player 1's name: ";
+                cin >> player1;
+                cout << "Hello " << player1 << ". " << endl;
+                cout << "Enter player 2's name: ";
+                cin >> player2;
+                cout << "Hello " << player2 << ". " << endl;
+             }
 
             // builds the gameboard for player1
             cout << "Creating board for " << player1 << endl;
