@@ -27,9 +27,6 @@ class ShipPlacement
 			   Stores x and y coordinates from user.
 		*/
 
-		void setShipPlacement(Board b);
-		//  Board b refers to Board file
-
 		char getOrientation();
 	};
 #endif 
