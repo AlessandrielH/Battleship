@@ -9,6 +9,7 @@
 
 const int COL = 10;
 const int ROW = 10;
+const string BORDER="****************************************************************";
 
 using namespace std;
 
@@ -64,11 +65,11 @@ int main()
                 cout << "Enter player 1's name: ";
                 cin >> player1;
                 cout << "Hello " << player1 << ". " << endl;
-                cout << "****************************************************************" << endl;
+                cout << BORDER << endl;
                 cout << "Enter player 2's name: ";
                 cin >> player2;
                 cout << "Hello " << player2 << ". " << endl;
-                cout << "****************************************************************" << endl;
+                cout <<BORDER << endl;
             // builds the gameboard for player1
             cout << "Creating board for " << player1 << endl;
             Board p1Board;
@@ -81,7 +82,7 @@ int main()
         
 
             // builds the gameboard for player2
-            cout << "****************************************************************" << endl;
+            cout << BORDER << endl;
             cout << "Creating board for " << player2 << endl;
             Board p2Board;
             p2Board.createBoard();
@@ -99,7 +100,7 @@ int main()
                 Attack(player1, &xCoordinate, &yCoordinates,p1BoardA);
 
                 //updateboard
-                cout << "****************************************************************" << endl;
+                cout << BORDER << endl;
                 cout << player1 << "'s attack board is updated!" << endl;
                 //check player2 board[xCoordinate][yCoordinate]for hit
                 hit = hitSuccess(p2Board, xCoordinate, yCoordinates);
@@ -117,7 +118,7 @@ int main()
                 Attack(player2, &xCoordinate, &yCoordinates,p1BoardA);
 
                 //updateboard
-                cout << "****************************************************************" << endl;
+                cout << BORDER << endl;
                 cout << player2 << "'s attack board is updated!" << endl;
 
                 //check player1 board[xCoordinate][yCoordinate]for hit
@@ -134,7 +135,7 @@ int main()
         }
         else if (choice == 2)
         {
-            cout << "****************************************************************" << endl;
+            cout << BORDER << endl;
             cout << "Goodbye for now." << endl;
             playAgain = false;
         }
@@ -156,7 +157,7 @@ void Attack(string name, int *x, int* y, Board b)
     *y = -1;
     int tempX, tempY;
     do {
-        cout << "****************************************************************" << endl;
+        cout << BORDER << endl;
         cout << name << " will now attack!!!" << endl;
         cout << name << ", enter the x-coordinates: ";
         cin >> tempX;
@@ -166,7 +167,7 @@ void Attack(string name, int *x, int* y, Board b)
         if (tempX < 0 || tempX>COL || tempY < 0 || tempY>ROW)
         {
 
-            cout << "****************************************************************" << endl;
+            cout << BORDER << endl;
             cout << name << "Incorrect x or y coordinates." << endl;
             cout << "Coordinants must range from 0-"<< COL <<"." << endl;
             cout << name << "Incorrect x or y coordinates." << endl; //Do we need both of these lines 172 and 173? It's a repeat of 170 and 171.
@@ -176,7 +177,7 @@ void Attack(string name, int *x, int* y, Board b)
         else
         {
             if  (b.confirmHit (tempX,tempY) == 'H' || b.confirmHit (tempX,tempY) == 'M')
-                cout << "***************************************************************************" << endl;
+                cout << BORDER << endl;
                 cout << name << ", you have entered those x and y coordinates already!"<< endl; //Should we include "try again"?
                 //Does there need to be an input here to let them enter different coordinates?
             
