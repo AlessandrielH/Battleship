@@ -12,9 +12,10 @@ const int ROW = 10;
 
 using namespace std;
 
-void Attack(string, int*, int*);
+void Attack(string, int*, int*, Board);
 bool hitSuccess(Board, int, int);
-bool GAMEOVER( Board);
+bool GAMEOVER( Board,Board);
+bool compareBoard(Board, Board);
 
 void displayMenu()
 {
@@ -36,9 +37,8 @@ int main()
     {
         string player1;//player1 name
         string player2;//player2 name
-        int x1, x2, y1, y2;//ship placement coordinants
 
-        int xCoordinate, yCoordinates;//attack coordinates
+        int xCoordinate ,yCoordinates;//attack coordinates
         bool gameOver = false;
         bool hit = false;//attack verification
 
@@ -51,7 +51,7 @@ int main()
         int choice;
         cout << "Select an option from the menu above. ";
         cin >> choice;
-        while(choice < 1 || choice > 2) 
+         while(choice < 1 || choice > 2) 
             {
                 cout << "Invalid choice, please enter 1 or 2: ";
                 cin >> choice;
@@ -65,8 +65,7 @@ int main()
                 cout << "Enter player 2's name: ";
                 cin >> player2;
                 cout << "Hello " << player2 << ". " << endl;
-             }
-
+             
             // builds the gameboard for player1
             cout << "Creating board for " << player1 << endl;
             Board p1Board;
@@ -75,7 +74,7 @@ int main()
 
             //Place battleship for player1
             ShipPlacement p1Ships;
-            p1Ships.placeShips(p1Ships);
+            p1Ships.placeShips(p1Board);
             p1Ships.setShipPlacement(p1Board);
 
             // builds the gameboard for player2
@@ -86,14 +85,14 @@ int main()
 
             //Place battleship for player2
             ShipPlacement p2Ships;
-            p2Ships.placeShips(p2Ships);
+            p2Ships.placeShips(p2Board);
             p2Ships.setShipPlacement(p2Board);
 
             do
             {
                 //display player1 attack board
                 p1BoardA.displayBoard();
-                Attack(player1, &xCoordinate, &yCoordinates);
+                Attack(player1, &xCoordinate, &yCoordinates,p1BoardA);
 
                 //updateboard
                 cout << player1 << "'s attack board is updated!" << endl;
@@ -110,7 +109,7 @@ int main()
 
                 //display player2 attack board
                 p2BoardA.displayBoard();
-                Attack(player2, &xCoordinate, &yCoordinates);
+                Attack(player2, &xCoordinate, &yCoordinates,p1BoardA);
 
                 //updateboard
                 cout << player2 << "'s attack board is updated!" << endl;
@@ -141,9 +140,10 @@ bool hitSuccess(Board b, int x, int y)
     {
         return true;
     }
+    else {return false;}
 }
 
-void Attack(string name, int* x, int* y, Board b)
+void Attack(string name, int *x, int* y, Board b)
 {
     *x = -1;
     *y = -1;
@@ -166,7 +166,7 @@ void Attack(string name, int* x, int* y, Board b)
         
         else
         {
-            if  (B.confirmHit (tempX,tempY) == 'H' || B.confirmHit (tempX,tempY) == 'M')
+            if  (b.confirmHit (tempX,tempY) == 'H' || b.confirmHit (tempX,tempY) == 'M')
                 cout << name << "You have entered those x and y coordinates already!"<< endl;
             
             else
@@ -181,7 +181,7 @@ void Attack(string name, int* x, int* y, Board b)
 
 bool GAMEOVER(Board attacker, Board victim)
 {
-    if (victim.compareBoard(attacker)==false)
+    if (compareBoard(attacker, victim)==false)
     {        
         return false;
     }
@@ -189,4 +189,25 @@ bool GAMEOVER(Board attacker, Board victim)
     {
         return true;
     }
+}
+
+bool compareBoard(Board attacker, Board victim)
+{
+    bool gameOver = false;
+    int count = 0;
+    for (int i = 0; i < COL; i++)
+    {
+        for (int j = 0; j < ROW; j++)
+        {
+            if (attacker.confirmHit(i, j) == 'H' && victim.confirmHit(i, j) == 'X')
+            {
+                count++;
+                if (count == 18)
+                {
+                    gameOver = true;
+                }
+            }
+        }
+    }
+    return gameOver;
 }
