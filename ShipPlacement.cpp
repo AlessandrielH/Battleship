@@ -16,10 +16,12 @@ void ShipPlacement::placeShips(Board b)
 
 	for (int n = 0; n < NUM_OF_SHIPS; n++)
 	{
-		cout << "Your " << oNos[n] << " ship is named " << names[n] << endl; //oNos is ordinal number
-		cout << "This ship is " << units[n] << " units long."; //units refers to the length of the ship
 		do
 		{
+
+			cout << "Your " << oNos[n] << " ship is named " << names[n] << endl; //oNos is ordinal number
+			cout << "This ship is " << units[n] << " units long."; //units refers to the length of the ship
+
 			cout << "Do you want it to be vertical or horizontal: v/h? "; // v and h refers to the orientation 
 			cin >> orientation;
 		} while (orientation != 'v' && orientation != 'h');

@@ -51,9 +51,11 @@ int main()
         int choice;
         cout << "Select an option from the menu above. ";
         cin >> choice;
-         while(choice < 1 || choice > 2) 
+        while(choice < 1 || choice > 2)
             {
-                cout << "Invalid choice, please enter 1 or 2: ";
+                cout << "Please select an integer from 1 or 2" << endl;
+                cin.clear();
+                cin.ignore(10000, '\n'); // this line eliminated the infinite loop issue
                 cin >> choice;
             }
         if (choice == 1)
