@@ -77,7 +77,7 @@ int main()
             //Place battleship for player1
             ShipPlacement p1Ships;
             p1Ships.placeShips(p1Board);
-            p1Ships.setShipPlacement(p1Board);
+        
 
             // builds the gameboard for player2
             cout << "Creating board for " << player2 << endl;
@@ -88,7 +88,7 @@ int main()
             //Place battleship for player2
             ShipPlacement p2Ships;
             p2Ships.placeShips(p2Board);
-            p2Ships.setShipPlacement(p2Board);
+           
 
             do
             {
