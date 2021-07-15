@@ -16,7 +16,7 @@ using namespace std;
 			cout << "This ship is " << units[n] << " long."; //units refers to the length of the ship
 			cout << "Do you want it to be vertical or horizontal: v/h? "; // v and h refers to the orientation 
 			cin >> orientation;
-			cout << "Set the x-coordinate for the beginninng of the ship:";
+			cout << "Set the x-coordinate for the beginning of the ship:";
 			cin >> xCoord;
 			cout << "Set the y-coordinate for the beginning of the ship:";
 			cin >> yCoord;
@@ -34,7 +34,7 @@ using namespace std;
 
 				cout<<"Your coordinates are out of bounds.\n"; 
 				cout<<"Please enter valid x coordinate and y coordinate within 0 to 9."<< endl;
-				cout << "Set the x-coordinate for the beginninng of the ship:";
+				cout << "Set the x-coordinate for the beginning of the ship:";
 				cin >> xCoord;
 				cout << "Set the y-coordinate for the beginning of the ship:";
 				cin >> yCoord;
