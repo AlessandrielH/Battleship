@@ -1,13 +1,12 @@
 #pragma once
-
 #ifndef BOARD
 #define BOARD
 
 class Board
 {
 private:
-	static const int boardsize = 10;
-	char board[boardsize][boardsize];
+	static const int SIZE = 10;
+	char board[SIZE][SIZE];
 public:
 
 	Board();
@@ -59,8 +58,6 @@ public:
 	~Purpose:   places a ship on the board at the                       ~
 	~            position(xCoord,yCoord), sets that position to '1'     ~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-	
-	bool compareBoard(Board b);
 
 };
 
