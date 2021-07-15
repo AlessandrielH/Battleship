@@ -10,7 +10,7 @@ Board::Board()
 
 int Board::getSize()
 {
-    return boardsize;
+    return SIZE;
 }
 
 char Board::confirmHit(int x, int y)
@@ -20,17 +20,16 @@ char Board::confirmHit(int x, int y)
 
 void Board::displayBoard()
 {
-    int s = boardsize;
     cout << "   ";
-    for (int a = 0; a < s; a++)
+    for (int a = 0; a < SIZE; a++)
     {
         cout << a << "|";
     }
     cout << endl;
-    for (int i = 0; i < s; i++)
+    for (int i = 0; i < SIZE; i++)
     {
         cout << "|" << i << "|";
-        for (int j = 0; j < s; j++)
+        for (int j = 0; j < SIZE; j++)
         {
             cout << board[i][j] << "|";
         }
@@ -40,7 +39,7 @@ void Board::displayBoard()
 
 void Board::createBoard()
 {
-    int s = boardsize;
+    int s = SIZE;
     for (int i = 0; i < s; i++)
     {
         for (int j = 0; j < s; j++)
@@ -65,25 +64,4 @@ void Board::updateBoard(bool hit, int x, int y) //This function updates the boar
     {
        board[x][y]='M'; //the letter M shows that this spot is a miss because no ship was placed there
     }
-}
-
-bool compareBoard(Board b)
-{
-    bool gameOver=false;
-    int count=0;
-    for(int i=0;i<boardsize;i++)
-    {
-        for (int j=0;j<boardsize;J++)
-        {
-            if(b.confirmHit(i,j)=='H' && this.confirmHit(i,j)=='X')
-            {
-                count++;
-                if(count==18)
-                {
-                    gameOver=true;
-                }
-            }
-        }
-    }
-    return gameOver;
 }
