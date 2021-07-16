@@ -38,13 +38,15 @@ void ShipPlacement::placeShips(Board &b)
 			{
 				cout << "Your coordinates are out of bounds.\n";
 				cout << "Please enter valid x coordinate and y coordinate within 0 to 9." << endl;
+				cin.clear();
+				cin.ignore(10000,'\n');
 			}
 			else 
 			{
 				//ensures that ships do not overlapp
 				for (int a = 0; a < units[n]; a++)
 				{
-					if (orientation = 'v') {
+					if (orientation == 'v') {
 						if (b.confirmHit((x+1), y) == 'X')
 						{
 							cout << "****************************************************************" << endl;
