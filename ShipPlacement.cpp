@@ -22,7 +22,9 @@ void ShipPlacement::placeShips(Board b)
 		{
 			cout << "Do you want it to be vertical or horizontal: v/h? "; // v and h refers to the orientation 
 			cin >> orientation;
-		} while (orientation != 'v' && orientation != 'h');
+		} while (orientation != 'v' && orientation != 'h'); //Should line 25 include the not symbols (!) for v and h??
+								    //The instructions appear to say that we will ask the user 
+								    //to input x and y coordinates if they don't input a v or an h. 
 
 		//jgminor7 added code below so user doesn't place a ship out-of-bounds of board area
 		do
@@ -47,20 +49,20 @@ void ShipPlacement::placeShips(Board b)
 		orientation = tolower(orientation);
 		if (orientation == 'v') // v is vertical ship placement, size of ship increments by 1 unit
 		{
-			for (int i = 0; i < units[i]; i++)
+			for (int i = 0; i < units[n]; i++)
 			{
 				b.setShip((xCoord + i), yCoord); // b refers to Board file
 			}
 		}
 		else if (orientation == 'h') // h is horizontal ship placement, size of ship increments by 1 unit
 		{
-			for (int i = 0; i < units[i]; i++)
+			for (int i = 0; i < units[n]; i++)
 			{
 				b.setShip(xCoord, (yCoord + i)); // b refers to Board file
 			}
 		}
 		b.displayBoard();
-		cout << "SetShipPLacement ended" << endl;
+		cout << "SetShipPLacement ended" << endl; //What does this line do?
 
 	}
 }
