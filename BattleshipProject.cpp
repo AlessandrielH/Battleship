@@ -206,7 +206,7 @@ void Attack(string name, int *x, int* y, Board b)
             if  (b.confirmHit (tempX,tempY) == 'H' || b.confirmHit (tempX,tempY) == 'M')
             {
                 cout << "****************************************************************" << endl;
-                cout << name << "You have entered those x and y coordinates already!"<< endl;
+                cout << name << ", you have entered those x and y coordinates already!"<< endl;
                  *x = -1;
                  *y = -1;
             }
