@@ -59,9 +59,11 @@ void Board::updateBoard(bool hit, int x, int y) //This function updates the boar
     if (hit==true)
     {
        board[x][y]='H'; //the letter H shows that this ship has been hit
+       cout << "You hit a battleship!!!" << endl;
     }
-    else 
+    else if(hit==false)
     {
        board[x][y]='M'; //the letter M shows that this spot is a miss because no ship was placed there
+       cout << "You missed!!! Hahaha!!!" << endl;
     }
 }
