@@ -14,7 +14,7 @@ using namespace std;
 
 void Attack(string, int*, int*, Board);
 //bool hitSuccess(Board, int, int);
-bool GAMEOVER( Board,Board, string name);
+bool GAMEOVER( Board, Board, string name);
 
 void displayMenu()
 {
@@ -111,13 +111,15 @@ int main()
                 else { cout << "ERROR" << endl; }
 
                 if (hit == true)
+                {}
+                else 
                 {
-                    //Check gameOver
-                    gameOver = GAMEOVER(p1AttackBoard, p2DefenseBoard, player1);
+                    cout <<" hit is false" << endl; 
                 }
-                else { cout <<" hit is false" << endl; }
                 //updateboard
                 p1AttackBoard.updateBoard(hit, xCoordinate, yCoordinates);
+                //Check gameOver
+                gameOver = GAMEOVER(p1AttackBoard, p2DefenseBoard, player1);
                 p1AttackBoard.displayBoard();
                 cout << "****************************************************************" << endl;
                 cout << "****************************************************************" << endl;
@@ -144,13 +146,15 @@ int main()
                 else { cout << "ERROR" << endl; }
 
                 if (hit == true)
-                {
-                    //Update gameOver
-                    gameOver = GAMEOVER(p2AttackBoard, p1DefenseBoard, player2);
+                {}
+                else 
+                { 
+                    cout << " hit is false" << endl; 
                 }
-                else { cout << " hit is false" << endl; }
                 //updateboard
                 p2AttackBoard.updateBoard(hit, xCoordinate, yCoordinates);
+                //Update gameOver
+                gameOver = GAMEOVER(p2AttackBoard, p1DefenseBoard, player2);
                 p2AttackBoard.displayBoard();
                 cout << "****************************************************************" << endl;
                 cout << "****************************************************************" << endl;
@@ -166,20 +170,7 @@ int main()
     }
     return 0;
 };
-/*bool hitSuccess(Board b, int x, int y)
-{
-    if (b.confirmHit(x, y) == 'X')
-    {
-        return true;
-    }
-    else if (b.confirmHit(x,y)=='~')
-    {return false; }
-    else
-    {
-        cout << "ERROR" << endl;
-        return false;
-    }
-}*/
+
 
 void Attack(string name, int *x, int* y, Board b)
 {
@@ -206,7 +197,7 @@ void Attack(string name, int *x, int* y, Board b)
             if  (b.confirmHit (tempX,tempY) == 'H' || b.confirmHit (tempX,tempY) == 'M')
             {
                 cout << "****************************************************************" << endl;
-                cout << name << ", you have entered those x and y coordinates already!"<< endl;
+                cout << name << "You have entered those x and y coordinates already!"<< endl;
                  *x = -1;
                  *y = -1;
             }
@@ -224,19 +215,32 @@ void Attack(string name, int *x, int* y, Board b)
 bool GAMEOVER(Board attacker, Board victim, string name)
 {
     bool g;
-    bool gameOver = false;
-    int count = 0;
+    bool gameOver=false;
+    int countH = 0;
+    int countM = 0; //for debug
+    int countE = 0;//for debug
     for (int i = 0; i < COL; i++)
     {
         for (int j = 0; j < ROW; j++)
         {
-            if (attacker.confirmHit(i, j) == 'H' && victim.confirmHit(i, j) == 'X')
+            if (attacker.confirmHit(i, j) == 'H')
             {
-                count++;
-                if (count == 18)
+                countH++;
+                cout << "You have " << countH << " hits." << endl;
+                if (countH == 4)
                 {
                     gameOver = true;
                 }
+            }
+            else if(attacker.confirmHit(i,j)=='M')
+            {
+                countM++;
+                cout << "You have " << countM << " misses." << endl;
+            }
+            else if(attacker.confirmHit(i,j)=='~')
+            {
+                countE++;
+                //cout << "You have " << countE << " empty slots." << endl;for debug 
             }
         }
     }
@@ -256,4 +260,3 @@ bool GAMEOVER(Board attacker, Board victim, string name)
     }
     return g;
 }
-
