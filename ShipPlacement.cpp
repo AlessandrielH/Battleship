@@ -47,14 +47,14 @@ void ShipPlacement::placeShips(Board b)
 		orientation = tolower(orientation);
 		if (orientation == 'v') // v is vertical ship placement, size of ship increments by 1 unit
 		{
-			for (int i = 0; i < units[i]; i++)
+			for (int i = 0; i < units[n]; i++)
 			{
 				b.setShip((xCoord + i), yCoord); // b refers to Board file
 			}
 		}
 		else if (orientation == 'h') // h is horizontal ship placement, size of ship increments by 1 unit
 		{
-			for (int i = 0; i < units[i]; i++)
+			for (int i = 0; i < units[n]; i++)
 			{
 				b.setShip(xCoord, (yCoord + i)); // b refers to Board file
 			}
