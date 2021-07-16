@@ -7,7 +7,7 @@ using namespace std;
 ShipPlacement::ShipPlacement()
 {}
 
-void ShipPlacement::placeShips(Board b)
+void ShipPlacement::placeShips(Board &b)
 {
 	int x, y;
 	string names[NUM_OF_SHIPS] = { "Conqueror", "Captain", "Victory", "Talent" }; //names of ships to be placed by players
@@ -44,8 +44,6 @@ void ShipPlacement::placeShips(Board b)
 		yCoord = y;
 		cout << "orientation:" << orientation << "\nx:" << xCoord << "\ny:" << yCoord << endl;
 
-
-
 		orientation = tolower(orientation);
 		if (orientation == 'v') // v is vertical ship placement, size of ship increments by 1 unit
 		{
@@ -63,8 +61,9 @@ void ShipPlacement::placeShips(Board b)
 		}
 		b.displayBoard();
 		cout << "SetShipPLacement ended" << endl; //What does this line do?
-
+		cout << "****************************************************************" << endl;
 	}
+	cout << "****************************************************************" << endl;
 }
 char ShipPlacement::getOrientation()
 {
