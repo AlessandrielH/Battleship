@@ -9,14 +9,12 @@
 
 const int COL = 10;
 const int ROW = 10;
-const string BORDER="****************************************************************";
 
 using namespace std;
 
 void Attack(string, int*, int*, Board);
-bool hitSuccess(Board, int, int);
-bool GAMEOVER( Board,Board);
-bool compareBoard(Board, Board);
+//bool hitSuccess(Board, int, int);
+bool GAMEOVER( Board,Board, string name);
 
 void displayMenu()
 {
@@ -41,12 +39,12 @@ int main()
 
         int xCoordinate ,yCoordinates;//attack coordinates
         bool gameOver = false;
-        bool hit = false;//attack verification
+        bool hit = true;//attack verification
 
-        Board p1BoardA;
-        Board p2BoardA;
-        p1BoardA.createBoard();
-        p2BoardA.createBoard();
+        Board p1AttackBoard;
+        Board p2AttackBoard;
+        p1AttackBoard.createBoard();
+        p2AttackBoard.createBoard();
 
         displayMenu();
         int choice;
@@ -65,91 +63,123 @@ int main()
                 cout << "Enter player 1's name: ";
                 cin >> player1;
                 cout << "Hello " << player1 << ". " << endl;
-                cout << BORDER << endl;
+                cout << "****************************************************************" << endl;
                 cout << "Enter player 2's name: ";
                 cin >> player2;
                 cout << "Hello " << player2 << ". " << endl;
-                cout <<BORDER << endl;
+                cout <<"****************************************************************" << endl;
             // builds the gameboard for player1
             cout << "Creating board for " << player1 << endl;
-            Board p1Board;
-            p1Board.createBoard();
-            p1Board.displayBoard();
+            Board p1DefenseBoard;
+            p1DefenseBoard.createBoard();
+            p1DefenseBoard.displayBoard();
 
             //Place battleship for player1
             ShipPlacement p1Ships;
-            p1Ships.placeShips(p1Board);
+            p1Ships.placeShips(p1DefenseBoard);
         
 
             // builds the gameboard for player2
-            cout << BORDER << endl;
+            cout << "****************************************************************" << endl;
             cout << "Creating board for " << player2 << endl;
-            Board p2Board;
-            p2Board.createBoard();
-            p2Board.displayBoard();
+            Board p2DefenseBoard;
+            p2DefenseBoard.createBoard();
+            p2DefenseBoard.displayBoard();
 
             //Place battleship for player2
             ShipPlacement p2Ships;
-            p2Ships.placeShips(p2Board);
+            p2Ships.placeShips(p2DefenseBoard);
            
 
             do
             {
                 //display player1 attack board
-                p1BoardA.displayBoard();
-                Attack(player1, &xCoordinate, &yCoordinates,p1BoardA);
+                p1AttackBoard.displayBoard();
+                Attack(player1, &xCoordinate, &yCoordinates,p1AttackBoard);
 
-                //updateboard
-                cout << BORDER << endl;
+                cout << "****************************************************************" << endl;
                 cout << player1 << "'s attack board is updated!" << endl;
                 //check player2 board[xCoordinate][yCoordinate]for hit
-                hit = hitSuccess(p2Board, xCoordinate, yCoordinates);
+                if (p2DefenseBoard.confirmHit(xCoordinate, yCoordinates) == 'X')
+                {
+                    hit= true;
+                }
+                else if (p2DefenseBoard.confirmHit(xCoordinate, yCoordinates) == '~')
+                {
+                    hit=false;
+                }
+                else { cout << "ERROR" << endl; }
+
                 if (hit == true)
                 {
                     //Check gameOver
-                    gameOver = GAMEOVER(p1BoardA, p2Board);
-                    hit = false;
+                    gameOver = GAMEOVER(p1AttackBoard, p2DefenseBoard, player1);
                 }
+                else { cout <<" hit is false" << endl; }
+                //updateboard
+                p1AttackBoard.updateBoard(hit, xCoordinate, yCoordinates);
+                p1AttackBoard.displayBoard();
+                cout << "****************************************************************" << endl;
+                cout << "****************************************************************" << endl;
 
                 //Player2's turn
 
                 //display player2 attack board
-                p2BoardA.displayBoard();
-                Attack(player2, &xCoordinate, &yCoordinates,p1BoardA);
+                p2AttackBoard.displayBoard();
+                Attack(player2, &xCoordinate, &yCoordinates,p2AttackBoard);
 
-                //updateboard
-                cout << BORDER << endl;
+                cout << "****************************************************************" << endl;
                 cout << player2 << "'s attack board is updated!" << endl;
 
                 //check player1 board[xCoordinate][yCoordinate]for hit
-                hit = hitSuccess(p1Board, xCoordinate, yCoordinates);
+                
+                if (p1DefenseBoard.confirmHit(xCoordinate, yCoordinates) == 'X')
+                {
+                    hit = true;
+                }
+                else if (p1DefenseBoard.confirmHit(xCoordinate, yCoordinates) == '~')
+                {
+                    hit = false;
+                }
+                else { cout << "ERROR" << endl; }
 
                 if (hit == true)
                 {
                     //Update gameOver
-                    gameOver = GAMEOVER(p2BoardA, p1Board);
-                    hit = false;
+                    gameOver = GAMEOVER(p2AttackBoard, p1DefenseBoard, player2);
                 }
+                else { cout << " hit is false" << endl; }
+                //updateboard
+                p2AttackBoard.updateBoard(hit, xCoordinate, yCoordinates);
+                p2AttackBoard.displayBoard();
+                cout << "****************************************************************" << endl;
+                cout << "****************************************************************" << endl;
 
             } while (gameOver != true);
         }
         else if (choice == 2)
         {
-            cout << BORDER << endl;
+            cout << "****************************************************************" << endl;
             cout << "Goodbye for now." << endl;
             playAgain = false;
         }
     }
     return 0;
 };
-bool hitSuccess(Board b, int x, int y)
+/*bool hitSuccess(Board b, int x, int y)
 {
     if (b.confirmHit(x, y) == 'X')
     {
         return true;
     }
-    else {return false;}
-}
+    else if (b.confirmHit(x,y)=='~')
+    {return false; }
+    else
+    {
+        cout << "ERROR" << endl;
+        return false;
+    }
+}*/
 
 void Attack(string name, int *x, int* y, Board b)
 {
@@ -157,16 +187,16 @@ void Attack(string name, int *x, int* y, Board b)
     *y = -1;
     int tempX, tempY;
     do {
-        cout << BORDER << endl;
+        cout << "****************************************************************" << endl;
         cout << name << " will now attack!!!" << endl;
         cout << name << ", enter the x-coordinates: ";
         cin >> tempX;
-        cout << name << ", enter the y-coordinates: "
+        cout << name << ", enter the y-coordinates: ";
         cin >> tempY;
 
         if (tempX < 0 || tempX>COL || tempY < 0 || tempY>ROW)
         {      
-            cout << BORDER << endl;
+            cout << "****************************************************************" << endl;
             cout << name << "Incorrect x or y coordinates." << endl;
             cout << "Coordinants must range from 0-"<< COL <<"." << endl;
         }
@@ -175,13 +205,14 @@ void Attack(string name, int *x, int* y, Board b)
         {
             if  (b.confirmHit (tempX,tempY) == 'H' || b.confirmHit (tempX,tempY) == 'M')
             {
-                cout << BORDER << endl;
+                cout << "****************************************************************" << endl;
                 cout << name << "You have entered those x and y coordinates already!"<< endl;
                  *x = -1;
                  *y = -1;
             }
             else
             {
+                cout << "Your attack has been confirmed" << endl;
                 *x = tempX;
                 *y = tempY;
             }
@@ -190,20 +221,9 @@ void Attack(string name, int *x, int* y, Board b)
     } while (*x == -1 || *y == -1);
 }
 
-bool GAMEOVER(Board attacker, Board victim)
+bool GAMEOVER(Board attacker, Board victim, string name)
 {
-    if (compareBoard(attacker, victim)==false)
-    {        
-        return false;
-    }
-    else
-    {
-        return true;
-    }
-}
-
-bool compareBoard(Board attacker, Board victim)
-{
+    bool g;
     bool gameOver = false;
     int count = 0;
     for (int i = 0; i < COL; i++)
@@ -220,5 +240,20 @@ bool compareBoard(Board attacker, Board victim)
             }
         }
     }
-    return gameOver;
+
+    if (gameOver==false)
+    {   
+        cout << "The game is not over yet!!!" << endl;
+        g= false;
+    }
+    else
+    {
+        cout << "***************************************" << endl;
+        cout << "GAMEOVER!!!!!!!!!!!!" << endl;
+        cout << name << " wins!!!!!!!!!!!!!" << endl;
+        cout << "***************************************" << endl;
+        g= true;
+    }
+    return g;
 }
+
