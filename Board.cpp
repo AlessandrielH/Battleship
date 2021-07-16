@@ -15,6 +15,7 @@ int Board::getSize()
 
 char Board::confirmHit(int x, int y)
 {
+    //cout <<"at "<<x<<", "<<y<<" there is a "<< board[x][y] << endl;
     return board[x][y];
 }
 
