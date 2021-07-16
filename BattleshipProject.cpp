@@ -227,7 +227,7 @@ bool GAMEOVER(Board attacker, Board victim, string name)
             {
                 countH++;
                 cout << "You have " << countH << " hits." << endl;
-                if (countH == 4)
+                if (countH == 18)
                 {
                     gameOver = true;
                 }
@@ -235,7 +235,7 @@ bool GAMEOVER(Board attacker, Board victim, string name)
             else if(attacker.confirmHit(i,j)=='M')
             {
                 countM++;
-                cout << "You have " << countM << " misses." << endl;
+               // cout << "You have " << countM << " misses." << endl;
             }
             else if(attacker.confirmHit(i,j)=='~')
             {
