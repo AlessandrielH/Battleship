@@ -20,8 +20,14 @@ void ShipPlacement::placeShips(Board &b)
 		cout << "This ship is " << units[n] << " units long."; //units refers to the length of the ship
 		do
 		{
+			if(orientation!='v'&& orientation!='h')
+			{
+				cin.clear();
+				cin.ignore(10000, '\n');
+			}
 			cout << "Do you want it to be vertical or horizontal: v/h? "; // v and h refers to the orientation 
 			cin >> orientation;
+			
 		} while (orientation != 'v' && orientation != 'h'); //Should line 25 include the not symbols (!) for v and h??
 								    //The instructions appear to say that we will ask the user 
 								    //to input x and y coordinates if they don't input a v or an h. 
