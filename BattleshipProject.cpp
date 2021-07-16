@@ -165,23 +165,21 @@ void Attack(string name, int *x, int* y, Board b)
         cin >> tempY;
 
         if (tempX < 0 || tempX>COL || tempY < 0 || tempY>ROW)
-        {
-
+        {      
             cout << BORDER << endl;
             cout << name << "Incorrect x or y coordinates." << endl;
-            cout << "Coordinants must range from 0-"<< COL <<"." << endl;
-            cout << name << "Incorrect x or y coordinates." << endl; //Do we need both of these lines 172 and 173? It's a repeat of 170 and 171.
             cout << "Coordinants must range from 0-"<< COL <<"." << endl;
         }
         
         else
         {
             if  (b.confirmHit (tempX,tempY) == 'H' || b.confirmHit (tempX,tempY) == 'M')
+            {
                 cout << BORDER << endl;
-                cout << name << ", you have entered those x and y coordinates already!"<< endl; //Should we include "try again"?
-                //Does there need to be an input here to let them enter different coordinates?
-            
-            
+                cout << name << "You have entered those x and y coordinates already!"<< endl;
+                 *x = -1;
+                 *y = -1;
+            }
             else
             {
                 *x = tempX;
