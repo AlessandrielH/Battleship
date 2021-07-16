@@ -20,7 +20,7 @@ class ShipPlacement
 
 	public:
 		ShipPlacement();
-		void placeShips(Board b);
+		void placeShips(Board &b);
 		/* this function accepts: 3 variables to store char orientation, int x coordinate, int y coordinate.
 			   No values returned.
 			   Stores orientation (v for vertical, h for horizontal) that user inputs.
