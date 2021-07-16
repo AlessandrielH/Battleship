@@ -63,8 +63,9 @@ void ShipPlacement::placeShips(Board b)
 		}
 		b.displayBoard();
 		cout << "SetShipPLacement ended" << endl; //What does this line do?
-
+		cout << "****************************************************************" << endl;
 	}
+	cout << "****************************************************************" << endl;
 }
 char ShipPlacement::getOrientation()
 {
